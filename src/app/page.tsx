@@ -12,7 +12,7 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:8000/api/");  // 假设后端接口路径是 /api/data
+      const response = await fetch("https://backend-eta-tan.vercel.app/hello/");  // 假设后端接口路径是 /api/data
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
