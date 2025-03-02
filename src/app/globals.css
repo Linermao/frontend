@@ -1,17 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin '@tailwindcss/typography';
+@config "../../tailwind.config.ts";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 深色模式 */
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+/* 应用主题样式 */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 body {
