@@ -5,20 +5,20 @@ import Image from "next/image";
 
 import IntroductionCard from "../Card/IntroductionCard";
 
-import avatar from "@/assets/avatar.jpg"
-import Download from "@/assets/icons/download.svg"
-
-
-
+import myself from "@/assets/myself.jpg"
 
 export default function About() {
   return (
     <>
       <div id="about" className="flex flex-col justify-center items-center h-screen gap-24">
         <div className="flex md:flex-row flex-col items-center gap-10 w-[850px]">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col flex-grow gap-4">
             <p className="text-4xl font-bold">About Me</p>
-            <p className="text-2xl font-bold text-gray-300">Being the both speaker of words and doer of deeds.</p>
+            <p className="text-2xl">
+              A CS students from <span className="font-bold">Hangzhou Dianzi University.</span>
+              <br></br>
+              Grading in 2026.6
+            </p>
             <div className="flex gap-4">
               <Button color='primary' className="text-black">
                 Download CV
@@ -29,7 +29,7 @@ export default function About() {
             </div>
           </div>
           <div>
-            <Image src={avatar} alt="avatar" className="rounded-2xl w-72 h-72" />
+            <Image src={myself} alt="myself" className="rounded-2xl w-72 h-72" />
           </div>
         </div>
         <div className="md:w-[940px] w-[450px]">

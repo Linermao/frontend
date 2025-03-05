@@ -9,7 +9,7 @@ const d_navLinks = [
     },
     {
         title: 'Blog',
-        href: '/blog',
+        href: '/blog/pages/1',
     },
     {
         title: 'Note',

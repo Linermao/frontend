@@ -1,5 +1,4 @@
-import { s_postCard } from "@/styles/Blog";
-import { m_articleType } from "@/utils/models";
+import { m_articleType } from "@/utils/models/articles";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 

@@ -1,47 +1,48 @@
 
 const d_skills = [
   {
-      title: 'AI Developer',
-      introduce: 'I am a AI Developer',
-      cover: '/assets/work/avatar.jpg'
+      title: 'Figma',
+      introduce: 'design goods',
+      cover: '/assets/work/Figma.png'
   },
   {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
+    title: 'CSS',
+    introduce: 'web styles',
+    cover: '/assets/work/CSS.png'
   },
   {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
+    title: 'HTML',
+    introduce: 'web framework',
+    cover: '/assets/work/HTML.png'
 
   },
   {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
-  },
-  {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
-  },
-  {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
-  },
-  {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
+    title: 'JavaScript',
+    introduce: 'web interaction',
+    cover: '/assets/work/JavaScript.png'
 
-  },
-  {
-    title: 'AI Developer',
-    introduce: 'I am a AI Developer',
-    cover: '/assets/work/avatar.jpg'
   },
 ]
 
-export { d_skills };
+const d_projects =[
+  {
+    title: 'Full Stack App',
+    tags: ['NextJS','Python','MongoDB'],
+    href: 'https://github.com/linermao',
+    cover: '/assets/avatar.jpg'
+  },
+  {
+    title: 'Full Stack App',
+    tags: ['NextJS','Python','MongoDB'],
+    href: 'https://github.com/linermao',
+    cover: '/assets/avatar.jpg'
+  },
+  {
+    title: 'Full Stack App',
+    tags: ['NextJS','Python','MongoDB'],
+    href: 'https://github.com/linermao',
+    cover: '/assets/avatar.jpg'
+  },
+]
+
+export { d_skills, d_projects };

@@ -1,5 +1,3 @@
-import { promises as fs} from 'fs';
-import path from 'path';
 import { compileMDX } from "next-mdx-remote/rsc";
 
 import remarkGfm from "remark-gfm";

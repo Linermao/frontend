@@ -1,5 +1,5 @@
 import Image from 'next/image'
-
+import Link from 'next/link'
 import github from '@/assets/icons/icon_github_white.svg'
 
 export default function IntroductionCard(){
@@ -7,8 +7,7 @@ export default function IntroductionCard(){
     <>
       <div className="flex flex-col bg-gray-900 rounded-2xl p-10 gap-8">
         <p className="text-white text-lg ">
-          (only for making a station) Welcome! I'm Linermao, a professional web developer with a knack for crafting visually stuning and highly
-          functional websites. Combining creativity and technical expertise. I transform your vision into digital masterpiece
+          Welcome! I&apos;m Linermao, a Computer Science and Technology students from Hangzhou Dianzi University. I transform your vision into digital masterpiece
           that excels in both appearance and performance.
         </p>
         <div className="flex justify-between items-center">
@@ -22,7 +21,9 @@ export default function IntroductionCard(){
               <p>project done</p>
             </div>
           </div>
-          <Image src={github} alt='icon' className='w-12 h-12'/>
+          <Link href='https://github.com/linermao'>
+            <Image src={github} alt='icon' className='w-12 h-12'/>
+          </Link>
         </div>
       </div>
     </>

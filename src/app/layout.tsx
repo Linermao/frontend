@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Providers } from "./providers";
+import { ProxyAgent, setGlobalDispatcher } from "undici";
 
 import "./globals.css";
 
@@ -12,6 +13,11 @@ export const metadata: Metadata = {
   title: "Linermao's kiosk",
   description: "",
 };
+
+if(process.env.NEXT_PUBLIC_LOCAL_FETCH_PROXY){
+  console.log("the proxy is enabled")
+  setGlobalDispatcher(new ProxyAgent(process.env.NEXT_PUBLIC_LOCAL_FETCH_PROXY))
+}
 
 export default function RootLayout({
   children,

@@ -10,7 +10,6 @@ import { d_accounts } from "@/data/blog"
 import { s_aside } from "@/styles/Blog"
 
 import avatar from "@/assets/avatar.jpg"
-import github from "@/assets/icons/icon_github_white.svg"
 
 export default function BlogCard(){
   return (

@@ -15,11 +15,10 @@ function Hero(){
 					</div>
 					<div className='z-10'>
 						<h1 className={`${styles.heroHeadText} text-white`}>
-							Hi, I'm <span className='text-[#253576] dark:text-[#ffbec9]'>Linermao</span>
+							Hi, I&apos;m <span className='text-[#253576] dark:text-[#ffbec9]'>Linermao</span>
 						</h1>
 						<p className={`${styles.heroSubText} mt-2 text-white-100`}>
-							I develop 3D visuals, user <br className='sm:hidden' />
-							interfaces and web applications
+							Welcome to Linermao&apos;s Kiosk!!!
 						</p>
 					</div>
 				</div>

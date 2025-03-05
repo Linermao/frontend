@@ -43,7 +43,7 @@ export default function MarkdownWithToc ({ content }: { content: string }) {
 
       // 将 ast 按行分割成数组
       const lines = ast.split('\n'); // 分割成行
-      lines.forEach((line, index) => {
+      lines.forEach((line) => {
         const match = line.match(regex);
         if (match) {
           const level = match[1].length; // 标题的层级

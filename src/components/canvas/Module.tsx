@@ -1,7 +1,7 @@
 "use client"
 
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { Suspense } from "react";
 import { Group } from "three"; // 确保 three.js 类型正确导入
 

@@ -12,7 +12,7 @@ function Card({onClick, className, children}: Props){
       <div className={`${onClick ? "cursor-pointer" : ""} 
                        ${className}
                        w-full bg-white dark:bg-[#121212] shadow-xl
-                       overflow-hidden rounded-2xl
+                       overflow-hidden rounded-xl
                     `}
           onClick={onClick}
       >

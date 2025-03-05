@@ -1,46 +1,72 @@
-import { use } from "react";
-import { m_articleType } from "@/utils/models";
-import BlogCard from "@/components/Card/BlogCard";
-import DataCard from "@/components/Card/DataCard";
-import SiteCard from "@/components/Card/SiteCard";
-import ArticleNavCard from "@/components/Card/ArticleNavCard";
-import MarkdownRenderer from "@/components/MarkdownTool/MarkdownRenderer";
+import { notFound } from "next/navigation";
+import { m_articleType } from "@/utils/models/articles";
+
+import MarkdownRenderer from "@/utils/tools/MarkdownRenderer";
+import Aside from "@/components/Aside";
+
+import { api_getArticles, api_getArticleByTitle } from '@/utils/apis';
+import { c_CACHE_MODIFY_FREQUENCE, c_t_ALL_ARTICLES, c_t_ARTICLE } from '@/utils/configs';
 
 
-function Aside({ content }: { content: string }) {
-  return (
-    <aside className="flex flex-col items-center md:w-[280px] w-full gap-4">
-      <BlogCard />
-      <DataCard />
-      <SiteCard />
-      <ArticleNavCard content={content} />
-    </aside>
-  );
+export async function generateStaticParams() {
+  const response = await fetch(api_getArticles(), {
+    next: { 
+      revalidate: c_CACHE_MODIFY_FREQUENCE,
+      tags: [c_t_ALL_ARTICLES],
+    }
+  });
+  if (!response.ok) return [];
+  
+  const articles: Pick<m_articleType, 'title'>[] = await response.json();
+  
+  return articles.map((article) => ({
+    article_title: article.title,
+  }));
+}
+
+async function getArticleData(title: string) {
+
+  const apiUrl = api_getArticleByTitle(title);
+  
+  const res = await fetch(apiUrl, {
+    next: { 
+      revalidate: c_CACHE_MODIFY_FREQUENCE, 
+      tags: [`${c_t_ARTICLE}${title}`], 
+    }
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({})); // 防止 res.json() 失败
+
+    if (res.status === 404) {
+      return null;
+    }
+
+    throw new Error(errorData?.detail || `Failed to fetch article (Status: ${res.status})`);
+  }
+
+  return res.json() as Promise<m_articleType>;
 }
 
 export default async function ArticlePage({
   params,
 }: {
-  params: { article_title: string };
+  params: Promise<{ article_title: string }>
 }) {
   const { article_title } = await params;
 
-  // 在服务器组件中直接获取数据
-  const res = await fetch(`http://localhost:8000/api/v1/articles/${article_title}`);
-  const article: m_articleType | null = await res.json();
-  
-  // 如果 article 为空，直接返回“文章未找到”
+  const article = await getArticleData(article_title);
+
   if (!article) {
-    return <p>Article not found</p>;
+    return notFound();
   }
 
-  // 使用 MarkdownRenderer 解析 article.content
   const { content: articleContent, frontmatter } = await MarkdownRenderer({ content: article.content });
 
   return (
     <>
       <div className="flex md:flex-row flex-col justify-center w-full gap-4 mt-24">
-        <Aside content={article.content} />
+        <Aside isArticle content={article.content} />
         <div className="flex flex-col bg-white dark:bg-[#121212] shadow-xl rounded-2xl w-[720px]">
           <div className="flex flex-col">
             <p className="text-4xl font-bold pt-10 pl-10 pr-10">

@@ -31,7 +31,8 @@
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "remark-parse": "^11.0.0",
-    "three": "^0.174.0"
+    "three": "^0.174.0",
+    "undici": "^7.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

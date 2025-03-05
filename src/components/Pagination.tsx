@@ -2,6 +2,15 @@
 
 import { Pagination as Pag } from "@heroui/react";
 
-export default function Pagination() {
-  return <Pag showControls initialPage={1} total={10} size="lg"/>;
+interface Props {
+  currentPage: number;
+  totalPages: number;
+}
+
+const handlePageChange = (page: number) => {
+    window.location.href = `/blog/pages/${page}`
+};
+
+export default function Pagination({ currentPage=1, totalPages=10}: Props) {
+  return <Pag showControls initialPage={currentPage} total={totalPages} size="lg" onChange={handlePageChange}/>;
 }

@@ -1,3 +1,7 @@
+export interface m_articlesNum {
+  articles_num: number
+}
+
 export interface m_frontMatter {
     title: string;
     date: Date;
@@ -7,13 +11,14 @@ export interface m_frontMatter {
 }
 
 // 文章头部信息
-interface m_articleMeta {
+export interface m_articleMeta {
     title: string;
     date: Date;
-    // tags: string[];
+    modify_date: Date;
+    tags: string[];
+    cover_img: string;
     categories: string;
-    cover: string;
-  }
+}
   
 // 文章条目，包含头部信息和路径信息
 export interface m_articleType {
