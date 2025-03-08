@@ -13,8 +13,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: {
+          light: "#fefefe",
+          dark: "#121212"
+        },
+        secondary: {
+          light: "#d2fdff",
+          dark: "#f4976c"
+        }
       },
       typography: {
         DEFAULT: {

@@ -1,7 +1,7 @@
 "use client"
 
 import { Canvas } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { Group } from "three"; // 确保 three.js 类型正确导入
 
@@ -46,7 +46,7 @@ function Module({ isMobile=false }) {
         <Model isMobile={isMobile}/>
       </Suspense>
       {/* 允许鼠标控制 */}
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </Canvas>
   );
 };

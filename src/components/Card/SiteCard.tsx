@@ -6,7 +6,7 @@ export default function SiteCard(){
   return(
     <>
       <Card className="flex gap-5 justify-center items-center p-10">
-        <p>{d_runTime}</p>
+        <p>本小卖部已经开张 {d_runTime} 天</p>
       </Card>
     </>
   )

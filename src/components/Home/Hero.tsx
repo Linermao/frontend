@@ -1,5 +1,7 @@
 import { styles } from '@/styles/styles';
+import ScrollIndicator from '../ui/ScrollIndicator';
 import Module from '@/components/canvas/Module';
+
 
 function Hero(){
 	return (
@@ -23,6 +25,7 @@ function Hero(){
 					</div>
 				</div>
 				<Module />
+				<ScrollIndicator />
 			</section>
 		</>
 	)

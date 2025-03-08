@@ -1,4 +1,4 @@
-import CommitForm from "../CommitForm"
+import ContactCard from "@/components/Card/ContactCard"
 
 export default function Contact(){
   return (
@@ -8,9 +8,8 @@ export default function Contact(){
           Let us work <br /> 
           together today!
         </div>
-        <div className="flex flex-col bg-[#121212] p-16 rounded-xl gap-8">
-          <p className="text-3xl font-bold">Contact Me:</p>
-          <CommitForm />  
+        <div>
+          <ContactCard />
         </div>
       </div>
     </>

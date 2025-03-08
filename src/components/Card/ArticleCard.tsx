@@ -23,11 +23,11 @@ function DisplayBar( {article}: Props) {
       <div className="flex flex-col">
         <Link href={`/blog/${article.title}`} className="text-black dark:text-white font-bold text-2xl hover:text-blue-600 cursor-pointer">{article.title}</Link>
         <div className="flex flex-row gap-2">
-          {article.tags.map((tag, index)=>(
+          {/* {article.tags.map((tag, index)=>(
             <div key={index}>
               {tag} |
             </div>
-          ))}
+          ))} */}
           <p>{article.category}</p>
         </div>
 

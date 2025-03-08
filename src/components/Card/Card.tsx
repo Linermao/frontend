@@ -1,7 +1,9 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { styles } from "@/styles/styles";
+
+import { ReactNode } from "react";
 
 interface Props{
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  onClick?: () => void;
   className?: string;
   children: ReactNode;
 }
@@ -11,7 +13,8 @@ function Card({onClick, className, children}: Props){
     <>
       <div className={`${onClick ? "cursor-pointer" : ""} 
                        ${className}
-                       w-full bg-white dark:bg-[#121212] shadow-xl
+                       w-full ${styles.primaryColor} 
+                       shadow-xl
                        overflow-hidden rounded-xl
                     `}
           onClick={onClick}

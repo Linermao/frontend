@@ -2,114 +2,69 @@
 
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-// import { motion } from 'framer-motion';
-import { Input } from '@heroui/react';
 
-import { styles } from '@/styles/styles';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { d_navLinks } from '@/data/navBar';
 
-import avatar from '@/assets/avatar.jpg';
-import menu from '@/assets/icons/menu.svg';
-import close from '@/assets/icons/x.svg'
-
-export const SearchIcon = ({size = 24, strokeWidth = 1.5, width = 24, height = 24, ...props}) => {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      focusable="false"
-      height={height || size}
-      role="presentation"
-      viewBox="0 0 24 24"
-      width={width || size}
-      {...props}
-    >
-      <path
-        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-      <path
-        d="M22 22L20 20"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-    </svg>
-  );
-};
-
-function Navbar (){
-	const [menuToggle, setmenuToggle] = useState(false);
+function IconTextButton({icon, text}: {icon: string, text: string}){
 	return (
 		<>
-			<nav className={`absolute top-0 z-10 w-full px-10 py-4 flex items-center justify-between shadow-xl`}>
-				{/* Avatar */}
-				<Link href='/' className='flex items-center gap-10'>
-				<Image src={avatar} alt="avatar" className='w-12 h-12 object-contain rounded-2xl'/>
-				<p className={`${styles.navbarTitle} flex`}> Alvin&nbsp;
-					<span className='md:block hidden'> | Linermao</span>
-				</p>
-				</Link>
-
-				{/* NavLinks */}
-				<>
-					{/* for PC */}
-					<NavLinks />
-					{/* for Mobile */}
-					<div className='sm:hidden flex justify-center items-center'>
-						<Image src={menu} alt="menu" className={`relative w-7 h-7 cursor-pointer ${menuToggle ? 'hidden' : ''}`}
-							onClick={() => setmenuToggle(!menuToggle)}
-						/>
-						<Image src={close} alt="close" className={`relative w-7 h-7 cursor-pointer ${menuToggle ? '' : 'hidden'}`}
-							onClick={() => setmenuToggle(!menuToggle)}
-						/>
-						<div className={`${menuToggle ? "flex" : "hidden"} p-6 bg-black absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
-							<NavLinks isMobile={true} />
-						</div>
-					</div>
-				</>
-				<Input classNames={{base: "max-w-full md:block hidden max-w-[10rem] h-10",
-														mainWrapper: "h-full",
-														input: "text-small",
-														inputWrapper:	"h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-													}}
-					placeholder="Type to search..."
-					size="sm"
-					startContent={<SearchIcon size={18} />}
-					type="search"
-				/>
-			</nav>
+			<div className='flex items-center justify-center gap-2'>
+				<Image src={icon} alt={text} width={24} height={24}/>
+				<div>
+					{text}
+				</div>
+			</div>
 		</>
 	)
 }
 
-function NavLinks( {isMobile=false} ){
-	const pathName = usePathname();
+function Navbar (){
+	const pathname = usePathname();
+	const { scrollY } = useScroll();
+	const [ hidden, setHidden ] = useState(false);
+
+	useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() || 0;
+    if (latest > previous && latest > 50) {
+      setHidden(true); // 向下滚动时隐藏
+    } else {
+      setHidden(false); // 向上滚动时显示
+    }
+  });
+
+
 	return (
 		<>
-			<ul className={`list-none ${isMobile? "flex flex-col" : "sm:flex hidden flex-row" } gap-10`}>
-				{ d_navLinks.map((link, index) => {
-					const isActive = pathName === link.href || (pathName.startsWith(link.href) && link.href!=="/" )
-					return (
-						<li
-							key={index}
-							className={`
-													${isMobile? "text-xl" : "" } 
-												  ${isActive ? `${styles.navbarTitleActive}` : `${styles.navbarTitle}`} 
-						`}>
-							<Link href={link.href}>
-									{link.title}
+			<motion.div
+      	className="fixed top-4 left-1/2 z-50"
+      	initial={{ y: -100, opacity: 0, x : "-50%"}}
+      	animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1, x : "-50%" }}
+      	transition={{ duration: 0.3, ease: "easeInOut" }}
+    	>
+				<nav className='flex items-center bg-black/80 px-4 py-2 rounded-2xl border border-gray-700 shadow-lg backdrop-blur-md'>		
+					<ul className='flex justify-center gap-4'>
+						{d_navLinks.map((link, index)=>(
+							<Link href={link.href} key={index}>
+								{link.active && (
+									<li>
+										<motion.div
+											className={`text-white/80 hover:text-white hover:bg-gray-900 rounded-xl px-2 py-1
+												 						border border-gray-700 hover:border-opacity-100
+																	  transition-colors duration-200 
+																		${pathname === link.href ? "bg-gray-900 border-opacity-100" : "border-opacity-0"}`}
+										>
+											<IconTextButton icon={link.icon} text={link.title} />
+										</motion.div>
+									</li>
+								)}
 							</Link>
-						</li>)
-					})
-				}
-			</ul>
+						))}
+					</ul>
+				</nav>
+			</motion.div>
 		</>
 	)
 }

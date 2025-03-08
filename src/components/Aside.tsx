@@ -4,7 +4,7 @@ import SiteCard from "@/components/Card/SiteCard";
 import ArticleNavCard from "@/components/Card/ArticleNavCard";
 
 interface BaseProps {
-  isArticle?: boolean; // 使 isArticle 可选，并默认 false
+  isArticle?: boolean;
 }
 
 interface ArticleProps extends BaseProps {
@@ -14,7 +14,7 @@ interface ArticleProps extends BaseProps {
 
 interface NonArticleProps extends BaseProps {
   isArticle?: false;
-  content?: never; // 确保 isArticle 为 false 时不能传 content
+  content?: never;
 }
 
 type Props = ArticleProps | NonArticleProps;

@@ -15,12 +15,6 @@
   --foreground: #ffffff;
 }
 
-/* 应用主题样式 */
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-}
-
 body {
   color: var(--foreground);
   background: var(--background);

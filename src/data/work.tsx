@@ -29,19 +29,22 @@ const d_projects =[
     title: 'Full Stack App',
     tags: ['NextJS','Python','MongoDB'],
     href: 'https://github.com/linermao',
-    cover: '/assets/avatar.jpg'
+    cover: '/assets/avatar.jpg',
+    introduction: "My full stack project whit NextJS + Python + MongoDB"
   },
   {
     title: 'Full Stack App',
     tags: ['NextJS','Python','MongoDB'],
     href: 'https://github.com/linermao',
-    cover: '/assets/avatar.jpg'
+    cover: '/assets/avatar.jpg',
+    introduction: "My full stack project whit NextJS + Python + MongoDB"
   },
   {
     title: 'Full Stack App',
     tags: ['NextJS','Python','MongoDB'],
     href: 'https://github.com/linermao',
-    cover: '/assets/avatar.jpg'
+    cover: '/assets/avatar.jpg',
+    introduction: "My full stack project whit NextJS + Python + MongoDB"
   },
 ]
 

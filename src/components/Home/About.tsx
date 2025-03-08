@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@heroui/button";
+import Button from "@/components/ui/Button"
 import Image from "next/image";
 
 import IntroductionCard from "../Card/IntroductionCard";
@@ -20,12 +20,12 @@ export default function About() {
               Grading in 2026.6
             </p>
             <div className="flex gap-4">
-              <Button color='primary' className="text-black">
+              <Button variant="gray" shadow="md">
                 Download CV
               </Button>
-              <Button >
+              {/* <Button variant="primary" shadow="md">
                 Scroll down
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div>

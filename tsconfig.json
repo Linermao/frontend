@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs", "next.config.ts", "src/components/Sidebar"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs", "next.config.ts", "src/components/Sidebar", "../dashboard/src/components/writer/WithAuth.tsx"],
   "exclude": ["node_modules"]
 }
